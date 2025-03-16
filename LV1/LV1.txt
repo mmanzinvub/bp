@@ -1,0 +1,96 @@
+ZAD1
+Dohvatite naselja samo iz BJELOVARSKO-BILOGORSKE županije
+
+select mjesto from common.naselja where idzupanija = 14;
+
+ZAD2
+Dohvatite naselja iz BJELOVARSKO-BILOGORSKE županije koja počinju sa slovom V
+
+select mjesto from common.naselja where idzupanija = 14 and mjesto like 'V%';
+
+ZAD3
+Dohvatite sva naselja u Hrvatskoj koja u sebi imaju riječ VUK
+
+select mjesto from common.naselja where mjesto like '%Vuk%';
+
+ZAD4
+Dohvatite sva naselja u Hrvatskoj koja završavaju s IĆI
+
+select mjesto from common.naselja where mjesto like '%ići';
+
+ZAD5
+U kojim županijama ima najviše mjesta koja završavaju s IĆI?
+
+select idzupanija, count(1) from common.naselja 
+where mjesto like '%ići' 
+group by idzupanija 
+order by count(1) desc;
+
+ZAD6
+Koliko ima naselja u Hrvatskoj?
+
+select count(1) from common.naselja;
+
+ZAD7
+Koliko naselja počinje sa slovom N?
+
+select count(1) from common.naselja where mjesto like 'N%';
+
+ZAD8
+Koliko naselja počinje sa slovom N i ima 7 slova?
+
+select count(1) from common.naselja where mjesto like 'N%' and length(mjesto) = 7;
+
+ZAD9
+Koja općina ima najviše mjesta?
+
+select opcina, count(mjesto) as broj_naselja 
+from common.naselja 
+group by opcina 
+order by broj_naselja desc;
+
+ZAD10
+Koja županija ima najviše naselja?
+
+select idzupanija, count(mjesto) as broj_naselja 
+from common.naselja 
+group by idzupanija 
+order by broj_naselja desc;
+
+ZAD11
+Kako bi izgledale tablice NASELJA i ZUPANIJE u dbdesigneru?
+
+preskocio
+
+ZAD12
+Koju tablicu smijem izbrisati, koja je tablica neovisna? (Ako je neovisna onda je parent)
+
+prvo child pa onda parent
+
+ZAD13
+Dohvatite sve podatke o korisnicima i njihovim kontaktima
+
+select * from common.kontakti;
+
+ZAD14
+Koliko korisnika koristi 097 mrežu?
+
+select count(1) from common.kontakti where pozmob like '97';
+
+ZAD15
+Iz kojeg mjesta ima najviše korisnika?
+
+select idnaselja, count(idkorisnika) as broj_korisnika
+from common.kontakti
+group by idnaselja
+order by broj_korisnika desc;
+
+ZAD16
+Dohvatite sve korisnike koji su mlađi od 23 godine
+
+select * from common.korisnici where godiste > 2003; (nema ih)
+
+ZAD17
+Dodajte u dbdesigner tablice KORISNICI i KONTAKTI
+
+preskocio
